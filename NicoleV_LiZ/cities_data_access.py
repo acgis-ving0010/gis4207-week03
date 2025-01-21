@@ -41,8 +41,26 @@ def add_city(name, country_code, district, population):
     #       The result proxy has a lastrowid property.  Assign the value of
     #       this property to the variable id.  If there was an issue creating
     #       the row, lastrowid will be assigned None
-    id = None  
-    return id
+    engine = create_engine(DB_URI)
+    with engine.connect() as conn:
+        cc_name = get_country_codes_and_names()
+        found = [item for item in cc_name if country_code in item]
+        if found == True:
+            sql = text("""
+                INSERT INTO "city" (name, countrycode, district, population)
+                VALUES (:city_name, :countrycode:, :district,:population)""")
+            values = {
+                'city_name': name,
+                'countrycode': country_code,
+                'district': district,
+                'population': population
+            }
+            result = conn.execute(sql, values)
+            conn.commit()
+            return result.lastrowid
+        else:
+            return None  
+
     
     
 def get_city_by_name(name):
