@@ -87,6 +87,7 @@ def get_city_by_name(name):
         row = result.fetchone()
     if row: 
         return row
+        ### LEAVE OUT ROW ID
     else:
         return None
     # row = None
@@ -105,12 +106,28 @@ def update_city_population(name, population):
         int: Number of rows affected.  If city was successfully updated, 
         returns 1.  If none were deleted, returns 0
     """
-    # NOTE:  As you did in get_city_by_name, create a SQL delete statement
+    # NOTE:  As you did in get_city_by_name, create a SQL update statement
     #        that is insensitive to the case of the city name
     #        The rowcount property of the result proxy contains the number
     #        of rows affected by the delete. Assign the variable row_count
-    #        to the value of this property   
-    row_count = 0
+    #        to the value of this property   \
+
+    engine = create_engine(DB_URI)
+    with engine.connect() as conn:
+        sql = text("""
+            UPDATE city
+            SET population = :new_population
+            WHERE LOWER(name) = :name
+        """)
+        values = {
+            'name': name.lower(),
+            'new_population': population
+        }
+        result = conn.execute(sql, values)
+        conn.commit()
+        row_count =  result.rowcount
+
+    # row_count = 0
     return row_count
 
     

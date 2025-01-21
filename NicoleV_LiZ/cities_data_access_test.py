@@ -55,3 +55,9 @@ def test_get_city_by_name(setup_database):
     assert actual != None
     test_none = cda.get_city_by_name('asd')
     assert test_none == None
+
+def test_update_city_population(setup_database):
+    cda.add_city("Kanata", "CAN", "Ontario", 150000)
+    expected = 1
+    actual = cda.update_city_population("Kanata", 100000)
+    assert actual == expected
