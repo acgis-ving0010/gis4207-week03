@@ -45,10 +45,10 @@ def add_city(name, country_code, district, population):
     with engine.connect() as conn:
         cc_name = get_country_codes_and_names()
         found = [item for item in cc_name if country_code in item]
-        if found == True:
+        if found:
             sql = text("""
                 INSERT INTO "city" (name, countrycode, district, population)
-                VALUES (:city_name, :countrycode:, :district,:population)""")
+                VALUES (:city_name, :countrycode, :district,:population)""")
             values = {
                 'city_name': name,
                 'countrycode': country_code,
