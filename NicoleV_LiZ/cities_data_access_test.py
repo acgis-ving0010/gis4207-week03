@@ -2,7 +2,7 @@ import cities_data_access as cda
 import pytest
 from sqlalchemy import create_engine, text, inspect
 
-cda.DB_URI = '../../../../data/world_db/world_test.db'
+cda.DB_URI = 'sqlite:///../../../../data/world_db/world_test.db'
 
 # Create tests for each function in cities_data_access
 # Use red30_data_access_test.py to help you with the development of these tests
@@ -36,5 +36,10 @@ def setup_database():
         conn.execute(text('DROP TABLE IF EXISTS city'))
 
 def test_connection(setup_database):
-    
     assert True
+
+def test_get_country_codes_and_names():
+    expected = ('ABW', 'Aruba')
+    cc_name = cda.get_country_codes_and_names()
+    actual = cc_name[0]
+    assert actual == expected

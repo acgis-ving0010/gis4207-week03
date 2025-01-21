@@ -16,8 +16,11 @@ def get_country_codes_and_names():
         list(tuple): [(code1, country1), ... (codeN, countryN)]
     """
     # NOTE: This is a query from the country table in world_db
-    rows = None
-    return rows
+    engine = create_engine(DB_URI)
+    with engine.connect() as conn:
+        sql = text("SELECT code, name FROM country")
+        rows = conn.execute(sql)
+        return rows.fetchall()
 
 
 def add_city(name, country_code, district, population):
