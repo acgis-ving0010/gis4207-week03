@@ -45,6 +45,13 @@ def test_get_country_codes_and_names():
     assert actual == expected
 
 def test_add_city(setup_database):
-    actual = cda.add_city("Kanata", "CAN", "Ontario", 150000 )
+    actual = cda.add_city("Kanata", "CAN", "Ontario", 150000)
     assert actual != None
     assert actual > 0
+
+def test_get_city_by_name(setup_database):
+    cda.add_city("Kanata", "CAN", "Ontario", 150000)
+    actual = cda.get_city_by_name('kanata')
+    assert actual != None
+    test_none = cda.get_city_by_name('asd')
+    assert test_none == None
