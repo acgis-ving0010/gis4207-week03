@@ -61,3 +61,12 @@ def test_update_city_population(setup_database):
     expected = 1
     actual = cda.update_city_population("Kanata", 100000)
     assert actual == expected
+
+def test_delete_city_by_name(setup_database):
+    expected = None
+    rowcount = cda.add_city("Kanata","CAN","Ontatio",150000)
+    assert rowcount == 1
+    cda.delete_city_by_name("Kanata")
+    actual = cda.get_city_by_name("Kanata")
+    assert actual == expected
+

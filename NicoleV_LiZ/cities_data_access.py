@@ -146,8 +146,16 @@ def delete_city_by_name(name):
     #        The rowcount property of the result proxy contains the number
     #        of rows affected by the delete. Assign the variable row_count
     #        to the value of this property 
-    row_count = 0
-    return row_count
+    engine = create_engine(DB_URI)
+    with engine.connect() as conn:
+        sql = text("DELETE FROM city WHERE LOWER(name) = :name")
+        values = {"name":name.lower()}
+        result = conn.execute(sql, values)
+        conn.commit()
+        print(f"Rows affected: {result.rowcount}")
+        return result.rowcount
+    # row_count = 0
+    # return row_count
 
 
 
