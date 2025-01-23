@@ -10,6 +10,7 @@ cda.DB_URI = 'sqlite:///../../../../data/world_db/world.db'
 
 def show_usage():
     print ("""
+Usage:
 cities_data_cli.py add city_name country_code district population
 cities_data_cli.py get city_name
 cities_data_cli.py delete city_name
@@ -66,7 +67,6 @@ def add_city(city_info):
     if id == None:
         print('Unable to add city')
     return id
-    
 
 def get_city(name):
     """ Given the name of a city, return information about the city
@@ -82,8 +82,6 @@ def get_city(name):
         return "Oops, it doesn't exist in the city table."
     else:
         return city_info
-
-
 
 def delete_city(name):
     """ Delete the given city
@@ -130,13 +128,12 @@ def is_valid_country_code(code_to_check):
 
     #TODO: Add the necessary code to determine if code_to_check is a
     #      valid country code or not
-    cc_name = get_country_codes()
-    country_codes = {row[0] for row in cc_name}
+    cc_name = cda.get_country_codes_and_names()
+    country_codes = [row[0] for row in cc_name]
     if code_to_check not in country_codes:
         return False
     else:
         return True
     
-
 if __name__ == '__main__':
     main()

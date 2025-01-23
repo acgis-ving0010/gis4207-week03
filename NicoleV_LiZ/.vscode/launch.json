@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Cities CLI: Valid Add",
+            "name": "Cities CLI: add valid data",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
@@ -19,7 +19,42 @@
             ]
         },
         {
-            "name": "Citie CLI: get oops",
+            "name": "Cities CLI: add data invalid country code",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "add",
+                "Spongetown",
+                "CA",
+                "ON",
+                "10"
+            ]
+        },
+        {
+            "name": "Cities CLI: get (nothing)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "get"
+            ]
+        },
+        {
+            "name": "Cities CLI: get oops",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "get",
+                "oops" 
+            ]
+        },
+        {
+            "name": "Cities CLI: get Spongetown (capital S)",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
@@ -30,29 +65,18 @@
             ]
         },
         {
-            "name": "Citie CLI: get Sponetown",
+            "name": "Cities CLI: get spongetown (lowercase s)",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
                 "get",
-                "Spongetown" 
+                "spongetown" 
             ]
         },
         {
-            "name": "Citie CLI: get spongetown",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "args": [
-                "get",
-                "Spongetown" 
-            ]
-        },
-        {
-            "name": "Citie CLI: delete Spongetown",
+            "name": "Cities CLI: delete Spongetown",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
@@ -63,7 +87,7 @@
             ]
         },
         {
-            "name": "Citie CLI: update population",
+            "name": "Cities CLI: update population",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
