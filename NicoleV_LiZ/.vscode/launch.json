@@ -11,7 +11,67 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "add", "Spongetown", "CA", "ON", "10"
+                "add",
+                "Spongetown",
+                "CAN",
+                "ON",
+                "10"
+            ]
+        },
+        {
+            "name": "Citie CLI: get oops",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "get",
+                "Spongetown" 
+            ]
+        },
+        {
+            "name": "Citie CLI: get Sponetown",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "get",
+                "Spongetown" 
+            ]
+        },
+        {
+            "name": "Citie CLI: get spongetown",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "get",
+                "Spongetown" 
+            ]
+        },
+        {
+            "name": "Citie CLI: delete Spongetown",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "delete",
+                "Spongetown" 
+            ]
+        },
+        {
+            "name": "Citie CLI: update population",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "update_population",
+                "Spongetown",
+                "1000" 
             ]
         },
         {
